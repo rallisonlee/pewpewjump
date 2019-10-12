@@ -349,7 +349,7 @@ function gameStart() {
 	
 			// prints bullet if firing
 			if (player.firing){
-				bullet.y -= 1.9;
+				bullet.y -= 2.2;
 				// if bullet reaches top,
 				if (bullet.y < 2) {
 				    console.log(parseInt(bullet.obj.css('top')));
@@ -367,8 +367,8 @@ function gameStart() {
 	
 	
 				// check for bullet-enemy collision . was here, i removed
-				bullet.width = ($("#bullet").width()/600)*100; /*clean this up*/
-				bullet.height = ($("#bullet").height()/600)*100;
+				bullet.width = ($("#bullet").width()/600)*100 + 1; /*clean this up*/
+				bullet.height = ($("#bullet").height()/600)*100 + 1;
 	
 				// console.log(bullet.width);
 				// console.log(bullet.height);

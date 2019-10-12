@@ -1,0 +1,112 @@
+
+* {
+
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+
+}
+
+html, body {
+
+  height:100%;
+  width:100%;
+
+}
+
+body {
+
+  align-content:space-around;
+  background-color:#202830;
+  color:#ffffff;
+  display:grid;
+  justify-content:center;
+
+}
+
+#pewpew {
+  border: 1px solid #000000;
+  border-radius: 25px;
+  width: 600px;
+   height: 600px;
+  background-color: #202020;
+  position: relative;
+
+}
+
+#start {
+    position: absolute;
+    left: 40%;
+    top: 48%;
+}
+
+
+/* stolen sprites*/
+
+
+#stars {
+background-image: url("../images/starfield.gif");
+background-repeat: repeat;
+background-position:center bottom 60px;
+width:99%;
+height:98%;
+}
+
+
+#playerSprite {
+position:absolute;
+top:91%;
+left:40%;
+/*width:120px;
+height:132px;*/
+background-image: url("../images/idle-black.gif");
+cursor:none;
+width: 75px;
+height: 104px;
+display: none;
+}
+
+#score {
+  position:absolute;
+  left: 1.5%;
+}
+
+
+
+#spaceship {
+position:absolute;
+left:200px;
+top:50px;
+width:200px;
+height:117px;
+background-image: url("../images/big_boss.png");
+cursor:none;
+}
+
+#bullet {
+position: absolute;
+top: 90%;
+left:50px;
+width: 18px;
+height: 40px;
+background-image: url("../images/shot.gif");
+}
+
+.enemies {
+position:absolute;
+background-image: url("../images/eye-right.gif");
+top:0%;
+width:52px;
+height:45px;
+/*background-color: green;*/
+}
+
+.monsters {
+position: absolute;
+background-image: url("../images/skull-monster.gif");
+top:92%;
+width:32px;
+height:30px;
+/*background-color: orange;*/
+transform: scaleX(-1);
+}

@@ -1,6 +1,6 @@
 
 * {
-
+  font-family: 'Nova Square', cursive;
   box-sizing:border-box;
   margin:0;
   padding:0;
@@ -34,10 +34,16 @@ body {
 
 }
 
-#start {
+/*#start {
     position: absolute;
     left: 40%;
     top: 48%;
+}*/
+
+#startScreen {
+  position: absolute;
+  /*left: 40%;*/
+  top: 30%;
 }
 
 
@@ -54,7 +60,7 @@ height:98%;
 
 
 #playerSprite {
-position:absolute;
+position: absolute;
 top:91%;
 left:40%;
 /*width:120px;
@@ -67,21 +73,22 @@ display: none;
 }
 
 #score {
-  position:absolute;
+  position: absolute;
   left: 1.5%;
+  display: none;
 }
 
 
 
-#spaceship {
-position:absolute;
+/*#spaceship {
+position: absolute;
 left:200px;
 top:50px;
 width:200px;
 height:117px;
 background-image: url("../images/big_boss.png");
 cursor:none;
-}
+}*/
 
 #bullet {
 position: absolute;

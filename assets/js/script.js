@@ -7,7 +7,7 @@ $(document).ready(function() {
 
 		  // $("#gameModal").modal('show');
 		gameStart();
-		$('#start')[0].remove();
+		$('#startScreen')[0].remove();
 	})
 
 	$("#playAgain")[0].addEventListener("click", function() {
@@ -18,6 +18,7 @@ $(document).ready(function() {
 
 
 function gameStart() {
+
 	let controller, player, loop, endOfGame = false;
 	let score = 0;
 	let height = $('#pewpew').height();
@@ -25,9 +26,6 @@ function gameStart() {
 
 		let noOfEnemies = 6;
 		let enemyCtr = 0;
-		// let hardMode = false;
-		$('#playerSprite').css('display', "inline-block");
-	
 		let monsterNo = 1;
 
 		$(".monsters").each(function(){
@@ -37,6 +35,8 @@ function gameStart() {
 			$(this).remove();
 			})
 		$("#bullet").remove();
+
+
 	
 	
 		player = {
@@ -58,6 +58,11 @@ function gameStart() {
 			width: null,
 			height: null
 		}
+
+		$('audio#pewpewjump-theme')[0].currentTime = 0;
+		$('audio#pewpewjump-theme')[0].play();
+		$("#score").css('display', 'inline-block');
+		$('#playerSprite').css('display', "inline-block");
 	
 		controller = {
 			left:false,
@@ -153,7 +158,6 @@ function gameStart() {
 	
 				if (StartYPosition > 95) {
 					endOfGame = true;
-					alert("ALIENS HAVE LANDED ON EARTH. GAME OVER.");
 					$("#gameOverModal").modal('show');
 				}
 	
@@ -262,6 +266,7 @@ function gameStart() {
 	
 	
 			if (controller.up && player.jumping == false) {
+				$('audio#jump')[0].play();
 	
 				$playerSprite.css('background-image', "url('assets/images/jump-black.gif')");
 	
@@ -293,6 +298,7 @@ function gameStart() {
 	
 			if (controller.fire && player.firing == false) {
 				player.firing = true;
+				$('audio#laser')[0].play();
 				$('<div id="bullet"></div>').insertAfter('#stars');
 		      	bullet.obj = $('#bullet');
 		      	bullet.x = player.x + 4.5;
@@ -349,9 +355,10 @@ function gameStart() {
 	
 			// prints bullet if firing
 			if (player.firing){
+
 				bullet.y -= 2.2;
 				// if bullet reaches top,
-				if (bullet.y < 2) {
+				if (bullet.y < 1) {
 				    console.log(parseInt(bullet.obj.css('top')));
 	
 				    // removes bullet element
@@ -412,6 +419,7 @@ function gameStart() {
 		      			score += 100;
 		      			$("#score")[0].innerHTML = "Score: " + score;
 		      			$("#bullet").remove();
+		      			$('audio#explosion')[0].play();
 		      			$enemy.remove();
 		      			enemyCtr--;
 		      			console.log(enemyCtr)
@@ -422,7 +430,6 @@ function gameStart() {
 		      		collisionCheck(player, $enemy, function(){
 		      			// code block to be run if collision detected
 		      			$enemy.remove();
-		      			alert('YOU GOT HIT. GAMEOVER.')
 		      			$("#gameOverModal").modal('show');
 		      			endOfGame = true;
 	
@@ -445,7 +452,6 @@ function gameStart() {
 		      			// code block to be run if collision detected
 		      			$monster.remove();
 		      			endOfGame = true;
-		      			alert('MONSTER HIT U. GAME OVER.');
 		      			$("#gameOverModal").modal('show');
 		      			
 	
@@ -487,6 +493,10 @@ function gameStart() {
 		// updates the canvas when browser is ready agin also checks if game over
 			if (!endOfGame) {
 				window.requestAnimationFrame(loop); 
+			}
+			else {
+				$('audio#pewpewjump-theme')[0].pause();
+				$('audio#gameover-sound')[0].play();
 			}
 
 	

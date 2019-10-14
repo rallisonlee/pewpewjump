@@ -111,9 +111,16 @@ height:45px;
 .monsters {
 position: absolute;
 background-image: url("../images/skull-monster.gif");
-top:92%;
+top:96%;
 width:32px;
 height:30px;
 /*background-color: orange;*/
 transform: scaleX(-1);
+}
+
+#preload1 {
+  background: url("../images/eye-right.gif") -9999px -9999px;
+}
+#preload2 {
+  background: url("../images/idle-black.gif") -9999px -9999px;
 }

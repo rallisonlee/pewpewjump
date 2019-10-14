@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	let hardMode = true;
+	let hardMode = false;
 	let enemyNo = 0;
 
 	$('#start')[0].addEventListener("click", function() {
@@ -249,7 +249,7 @@ function gameStart() {
 					monsterNo++;
 				}
 
-				else if (passRandom%1050 == 0) {
+				else if (passRandom%1000 == 0) {
 					drawEnemies();
 				}
 				else if (passRandom === "one") {
@@ -361,7 +361,7 @@ function gameStart() {
 
 				bullet.y -= 2.2;
 				// if bullet reaches top,
-				if (bullet.y < 1) {
+				if (bullet.y < 0.4) {
 				    console.log(parseInt(bullet.obj.css('top')));
 	
 				    // removes bullet element

@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	let hardMode = false;
+	let hardMode = true;
 	let enemyNo = 0;
 
 	$('#start')[0].addEventListener("click", function() {
@@ -237,7 +237,7 @@ function gameStart() {
 	
 		function randomEnemy(passRandom) {
 	
-				if (passRandom%210 == 0){
+				if (passRandom%500 == 0){
 					let monsterXPos = 90;
 
 					$('<div class="monsters" id="monster' + monsterNo  + '"></div>').insertAfter('#stars');
@@ -249,7 +249,10 @@ function gameStart() {
 					monsterNo++;
 				}
 
-				else if (passRandom%300 == 0) {
+				else if (passRandom%1050 == 0) {
+					drawEnemies();
+				}
+				else if (passRandom === "one") {
 					drawEnemies();
 				}
 				else { return;}
@@ -364,7 +367,6 @@ function gameStart() {
 				    // removes bullet element
 				    bullet.obj.remove();
 				    player.firing = false;
-				    console.log(player.firing + " means player firing no more")
 				}
 	
 					bullet.obj.css('left', bullet.x + 2 + '%');
@@ -387,7 +389,7 @@ function gameStart() {
 			
 			// if hardMode on, generate side scrolling mons
 			if (hardMode){
-				randomEnemy(Math.floor(Math.random() * 1000));
+				randomEnemy(Math.floor(Math.random() * 4000));
 
 			// infinite enemies
 				
@@ -422,7 +424,7 @@ function gameStart() {
 		      			$('audio#explosion')[0].play();
 		      			$enemy.remove();
 		      			enemyCtr--;
-		      			console.log(enemyCtr)
+		      			console.log("enemy no "+enemyCtr)
 	
 		      		})
 	
@@ -476,12 +478,20 @@ function gameStart() {
 		
 	
 		// checksif enemies = 0
-		if (enemyCtr == 0 && !hardMode) {
-			$("#gameModal").modal('show');
+		if (enemyCtr == 0) {
 
-			return;
+			if (!hardMode){
+				$("#gameModal").modal('show');
+				return;
+			}
+			else if (hardMode) {
+
+			console.log("enemyCtr was 0");
+			randomEnemy("one");
+			
+			}
 		}
-	
+		
 	
 	
 	

@@ -166,7 +166,7 @@ $(document).ready(function() {
 		}
 
 		function randomEnemy(passRandom) {
-			if (passRandom % 500 == 0) {
+			if (passRandom % 200 == 0) {
 				let monsterXPos = 90;
 				$('<div class="monsters" id="monster' + monsterNo + '"></div>').insertAfter('#stars');
 				$monster = $('#monster' + monsterNo);
